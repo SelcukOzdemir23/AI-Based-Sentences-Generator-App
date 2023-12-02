@@ -22,11 +22,27 @@ class SentencePageState extends State<SentencePage> {
   String subTitle = 'Create sentences';
 
   Future getSentences(String productName) async {
-    var sentencesData = await sentencesController.getPoem(productName);
-    setState(() {
-      sentences = sentencesData;
-    });
+
+    try {
+      var sentencesData = await sentencesController.getPoem(productName);
+      setState(() {
+        sentences = sentencesData;
+      });
+    } catch (error) {
+      // Hata durumunda snackbar göster
+      const snackBar = SnackBar(
+        content: Text('Hata: Lütfen tekrar deneyin'),
+        duration: Duration(seconds: 3),
+      );
+      ScaffoldMessenger.of(context).showSnackBar(snackBar);
+
+      // sentences değişkenini temizle
+      setState(() {
+        sentences = 'Çok üzgünüm! Lütfen sadece İngilizce bir kelime girin ve butona basın' ;
+      });
+    }
   }
+
 
   @override
   void initState() {
@@ -36,8 +52,16 @@ class SentencePageState extends State<SentencePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      drawer: const DrawerBar(),
       appBar: AppBar(
-        title: Center(child: Text(title)),
+        title: Center(
+          child: Text(
+            title,
+            style: const TextStyle(
+              fontSize: 18,
+            ),
+          ),
+        ),
       ),
       body: Center(
         child: Padding(
@@ -92,7 +116,7 @@ class SentencePageState extends State<SentencePage> {
               borderRadius: BorderRadius.circular(10.0),
             ),
             elevation: 5,
-            padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+            padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
           ),
           child: const Text(
             'Create',
@@ -132,9 +156,45 @@ class SentencePageState extends State<SentencePage> {
                 ),
               ),
             )
-          : Center(child: LoadingPage()),
+          : const Center(child: LoadingPage()),
 
       //Animation(),
+    );
+  }
+}
+
+class DrawerBar extends StatelessWidget {
+  const DrawerBar({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Drawer(
+      backgroundColor: Colors.green.shade200,
+      child: ListView(
+        padding: EdgeInsets.zero,
+        children: [
+          const DrawerHeader(
+            decoration: BoxDecoration(
+              color: Color.fromARGB(255, 175, 66, 53),
+            ),
+            child: Text('Drawer Header'),
+          ),
+          ListTile(
+            title: const Text('Github'),
+            onTap: () {},
+          ),
+          ListTile(
+            title: const Text('About App'),
+            onTap: () {},
+          ),
+          ListTile(
+            title: const Text('About Me'),
+            onTap: () {},
+          ),
+        ],
+      ),
     );
   }
 }
@@ -176,7 +236,7 @@ class _LoadingPageState extends State<LoadingPage> {
   void initState() {
     super.initState();
     // Timer'ı başlat
-    _timer = Timer.periodic(Duration(milliseconds: 500), (Timer timer) {
+    _timer = Timer.periodic(const Duration(milliseconds: 500), (Timer timer) {
       setState(() {
         _dotCount = (_dotCount + 1) % 4;
       });
@@ -198,17 +258,17 @@ class _LoadingPageState extends State<LoadingPage> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Text(
+            const Text(
               'Creating',
               style: TextStyle(fontSize: 18),
             ),
-            SizedBox(height: 20),
+            const SizedBox(height: 20),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 for (int i = 0; i < _dotCount; i++)
-                  Padding(
-                    padding: const EdgeInsets.all(4.0),
+                  const Padding(
+                    padding: EdgeInsets.all(4.0),
                     child: Text('.', style: TextStyle(fontSize: 24)),
                   ),
               ],

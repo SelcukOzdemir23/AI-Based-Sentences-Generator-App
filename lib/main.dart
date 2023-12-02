@@ -12,9 +12,11 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: 'Sentences Creator',
       theme: ThemeData(
         useMaterial3: true,
+        fontFamily: "FiraCode"
       ),
       home: const SentencePage(title: 'Sentence Creator For Words'),
     );
