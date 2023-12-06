@@ -1,3 +1,4 @@
-# Haiku generator demo app
+# Sentence Generator
 
-This folder contains the code for [Generative AI](https://developers.generativeai.google/) + Flutter codelab.
+Credit: 
+
