@@ -1,6 +1,6 @@
 # Proje Adı
 
-![Proje Logo veya Ekran Görüntüsü](url/to/image.png)
+AI BASED SENTENCES GENERATOR
 
 Kısa bir proje açıklaması ekleyin.
 
@@ -46,7 +46,7 @@ Bu talimatlar, projeyi yerel ortamınızda çalıştırmak ve geliştirmek için
 
 ## 🤝 Katkıda Bulunma
 
-Lütfen katkıda bulunmak istiyorsanız, [Katkıda Bulunma Kılavuzu](CONTRIBUTING.md) ve [Kod Kuralları](CODE_OF_CONDUCT.md) belgelerini inceleyin.
+
 
 ---
 
@@ -58,16 +58,14 @@ Bu proje [Lisans adı ve bağlantı] altında lisanslanmıştır. Daha fazla bil
 
 ## 📬 İletişim
 
-- Proje Sahibi: [Ad Soyad]
-- E-posta: [e-posta@example.com]
+- Proje Sahibi: [Müşerref Selçuk Özdemir]
+- E-posta: [selcuk.ozdemir2360@gmail.com]
 
 ---
 
 ## 🙌 Teşekkürler
 
 - [Teşekkür 1]
-- [Teşekkür 2]
-- [Teşekkür 3]
 
 ---
 
