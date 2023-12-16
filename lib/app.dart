@@ -1,8 +1,11 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:haiku_generator/controller/poem_controller.dart';
-import 'package:haiku_generator/widgets/shimmer_loading_anim.dart';
+import 'package:flutter/services.dart';
+
+import 'controller/sentences_controller.dart';
+import 'widgets/shimmer_loading_anim.dart';
+
 
 class SentencePage extends StatefulWidget {
   const SentencePage({super.key, required this.title});
@@ -40,6 +43,8 @@ class SentencePageState extends State<SentencePage> {
       setState(() {
         sentences = 'Çok üzgünüm! Lütfen sadece İngilizce bir kelime girin ve butona basın' ;
       });
+
+      print(error);
     }
   }
 
@@ -51,6 +56,7 @@ class SentencePageState extends State<SentencePage> {
 
   @override
   Widget build(BuildContext context) {
+    int currentIndex = 0;
     return Scaffold(
       drawer: const DrawerBar(),
       appBar: AppBar(
@@ -76,6 +82,36 @@ class SentencePageState extends State<SentencePage> {
               ],
             )),
       ),
+      // bottomNavigationBar: buildBottomNavigationBar(currentIndex),
+
+    );
+  }
+
+  BottomNavigationBar buildBottomNavigationBar(int currentIndex) {
+    return BottomNavigationBar(
+      items: const [
+        BottomNavigationBarItem(
+          icon: Icon(Icons.home),
+          label: "Hadi be",
+        ),
+        BottomNavigationBarItem(
+          icon: Icon(Icons.settings),
+          label: "Hadi be",
+        ),
+        BottomNavigationBarItem(
+          icon: Icon(Icons.download),
+          label: "Hadi be",
+        ),
+      ],
+      currentIndex: currentIndex,
+      onTap: (index) {
+        setState(() {
+          currentIndex = index;
+        });
+      },
+      backgroundColor: Colors.white,
+      showSelectedLabels: true,
+      showUnselectedLabels: false,
     );
   }
 
@@ -95,6 +131,9 @@ class SentencePageState extends State<SentencePage> {
             child: Padding(
               padding: const EdgeInsets.all(8.0),
               child: TextField(
+                inputFormatters: [
+                  LengthLimitingTextInputFormatter(10),
+                ],
                 controller: myController,
                 decoration: InputDecoration(
                     border: OutlineInputBorder(borderRadius: BorderRadius.circular(10.0)),

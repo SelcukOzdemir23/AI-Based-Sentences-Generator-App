@@ -1,9 +1,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.haiku_generator">
+    package="com.example.sentence_generator">
     <uses-permission android:name="android.permission.INTERNET"/>
 
     <application
-        android:label="haiku_generator"
+        android:label="Sentence Generator"
         android:name="${applicationName}"
         android:networkSecurityConfig="@xml/network_security_config"
         android:icon="@mipmap/ic_launcher">
