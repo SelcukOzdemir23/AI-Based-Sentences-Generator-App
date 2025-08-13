@@ -132,7 +132,7 @@ class SentencePageState extends State<SentencePage> {
               padding: const EdgeInsets.all(8.0),
               child: TextField(
                 inputFormatters: [
-                  LengthLimitingTextInputFormatter(10),
+                  LengthLimitingTextInputFormatter(50),
                 ],
                 controller: myController,
                 decoration: InputDecoration(
